@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Abel';
+    src: url('/fonts/abel-regular-webfont.eot');
+    src: url('/fonts/abel-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/abel-regular-webfont.woff') format('woff'),
+         url('/fonts/abel-regular-webfont.ttf') format('truetype'),
+         url('/fonts/abel-regular-webfont.svg#abelregular') format('svg');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+* {
+  font-family: 'Abel', sans-serif;
+}
+
+body {
+  background: url('/images/ricepaper_v3.png') repeat;
+}
