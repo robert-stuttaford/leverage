@@ -3,28 +3,37 @@
 
   :url "https://github.com/robert-stuttaford/leverage"
   
-  :dependencies [;; Clojure
-                 [org.clojure/clojure "1.5.1"]
-                 ;; ClojureScript
-                 [org.clojure/clojurescript "0.0-1909"]
-                 ;; Web server
-                 [ring-server "0.2.8"]
-                 ;; HTTP Routing
-                 [compojure "1.1.5"]
-                 ;; Server-side HTML Templating
-                 [hiccup "1.0.4"]
-                 ;; Client-side HTML Templating and DOM
-                 [prismatic/dommy "0.1.1"]
-                 ;; Datomic
-                 [com.datomic/datomic-free "0.8.4159"]]
+  :dependencies
+  [ ;; Clojure
+   [org.clojure/clojure "1.5.1"]
+   ;; ClojureScript
+   [org.clojure/clojurescript "0.0-1909"]
+   ;; Web server
+   [ring-server "0.2.8"]
+   ;; HTTP Routing
+   [compojure "1.1.5"]
+   ;; Server-side HTML Templating
+   [hiccup "1.0.4"]
+   ;; Client-side HTML Templating and DOM
+   [prismatic/dommy "0.1.1"]
+   ;; Datomic
+   [com.datomic/datomic-free "0.8.4159"]]
   
-  ;; Predictable repl port!
-  :repl-options {:port 9991}
+  :repl-options
+  { ;; Predictable REPL port
+   :port 9991
+   ;; Start the REPL here
+   :init-ns leverage.server}
+  
+  :plugins
+  [ ;; ClojureScript compiler
+   [lein-cljsbuild "0.3.3"]
+   ;; ClojureScript browser-connected REPL
+   [com.cemerick/austin "0.1.0"]]
   
   ;; ClojureScript -> JavaScript compilation
-  :profiles {:dev {:plugins [[lein-cljsbuild "0.3.3"]]}}
   :cljsbuild
-  {;; Clojure namespaces to include in ClojureScript
+  { ;; Clojure namespaces to include in ClojureScript
    :crossovers [leverage.domain]
    ;; produce a .js file
    :builds

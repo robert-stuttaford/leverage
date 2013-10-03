@@ -6,9 +6,11 @@
             [hiccup.core :as hiccup]
             [hiccup.element :as element]
             [hiccup.page :as page]
+            [cemerick.austin :as austin]
+            [cemerick.austin.repls :as austin-repls]
             [leverage.domain :as domain]))
 
-;; HTML LAYOUT
+;; HTML layout
 
 (defn layout
   [& content]
@@ -31,25 +33,50 @@
        [:div#content
         content]]]])))
 
-;; PAGES
+(comment
+  (layout "Hello, Tech4Africa!")
+
+  
+)
+
+;; Pages
 
 (defroutes app-routes
   (GET "/" []
-       (layout (domain/make-html-table domain/sample-data)))
+       (layout (domain/make-html-table domain/processed-sample-data)))
   
   (GET "/cljs" []
        (layout
         (page/include-js "/js/leverage.js")
-        (element/javascript-tag "leverage.app.start();"))))
+        (element/javascript-tag "leverage.app.start();")
+        (element/javascript-tag (austin-repls/browser-connected-repl-js)))))
+
+;; Static files, 404, request/response parsing, etc
 
 (def app (-> (routes app-routes
                      (compojure/resources "/")
                      (compojure/not-found "Not found!"))
              site))
 
-;; WEB SERVER
+(comment
+  (app {:request-method :get :uri "/"})
+
+
+  
+  (app {:request-method :get :uri "/cljs"})
+
+  
+  )
+
+;; Web Server
 
 (def web-process (atom nil))
+
+(comment
+  @web-process
+
+  
+  )
 
 (defn stop-web!
   []
@@ -62,3 +89,9 @@
   (stop-web!)
   (let [server (ring-server/serve app {:port 3333 :open-browser? false :join? false})]
     (reset! web-process server)))
+
+;; ClojureScript browser-connected REPL
+
+(defn start-cljs-repl!
+  []
+  (austin-repls/cljs-repl (reset! austin-repls/browser-repl-env (austin/repl-env))))
