@@ -1,3 +1,0 @@
-(ns leverage.core)
-
-(def music-data (slurp "music-data.edn"))
