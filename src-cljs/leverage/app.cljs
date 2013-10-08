@@ -10,8 +10,9 @@
 
 (defn render-table!
   [table-data]
-  (dommy/replace-contents! (sel1 :#content) 
-                           (domain/make-html-table table-data)))
+  (let [html-table (domain/make-html-table table-data)]
+    (.log js/console html-table)
+    (dommy/replace-contents! (sel1 :#content) html-table)))
 
 (defn ^:export start
   []

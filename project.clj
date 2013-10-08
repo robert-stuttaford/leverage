@@ -1,10 +1,10 @@
 (defproject leverage "0.1.0-SNAPSHOT"
-  :description "Get leverage with Clojure! A demonstration of Clojure, ClojureScript and Datomic"
+  :description "Get leverage with Clojure! A demonstration of Clojure and ClojureScript"
 
   :url "https://github.com/robert-stuttaford/leverage"
   
   :dependencies
-  [ ;; Clojure
+  [;; Clojure
    [org.clojure/clojure "1.5.1"]
    ;; ClojureScript
    [org.clojure/clojurescript "0.0-1909"]
@@ -15,12 +15,10 @@
    ;; Server-side HTML Templating
    [hiccup "1.0.4"]
    ;; Client-side HTML Templating and DOM
-   [prismatic/dommy "0.1.1"]
-   ;; Datomic
-   [com.datomic/datomic-free "0.8.4159"]]
+   [prismatic/dommy "0.1.1"]]
   
   :repl-options
-  { ;; Predictable REPL port
+  {;; Predictable REPL port
    :port 9991
    ;; Start the REPL here
    :init-ns leverage.server}

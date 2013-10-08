@@ -18,7 +18,7 @@
 
   
   
-  (get-in sample-data [:rows 1])
+  (get-in sample-data [:rows 1 1])
   
   
   )

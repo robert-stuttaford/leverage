@@ -4,8 +4,6 @@ This code accompanied a talk given at Tech4Africa on the 9th of October 2013 in 
 
 It demonstrates a bare minimum sample that shares code between server and client, with Clojure and ClojureScript respectively.
 
-It also demonstrates a basic Datomic query.
-
 ## Usage
 
 * Clone the repo.
