@@ -16,18 +16,13 @@
    [hiccup "1.0.4"]
    ;; Client-side HTML Templating and DOM
    [prismatic/dommy "0.1.1"]]
-  
-  :repl-options
-  {;; Predictable REPL port
-   :port 9991
-   ;; Start the REPL here
-   :init-ns leverage.server}
+
+  ;; Predictable REPL port
+  :repl-options {:port 9991}
   
   :plugins
   [ ;; ClojureScript compiler
-   [lein-cljsbuild "0.3.3"]
-   ;; ClojureScript browser-connected REPL
-   [com.cemerick/austin "0.1.0"]]
+   [lein-cljsbuild "0.3.3"]]
   
   ;; ClojureScript -> JavaScript compilation
   :cljsbuild

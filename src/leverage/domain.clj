@@ -13,8 +13,8 @@
 
   
 
-  (:cols sample-data)
   (get sample-data :cols)
+  (:cols sample-data)
 
   
   
@@ -32,7 +32,7 @@
 (comment
   (row-with-sum [1 2 3])
 
-
+  
   )
 
 (defn process-row-sums
@@ -54,7 +54,6 @@
   
   )
 
-
 (defn make-html-table
   [{:keys [cols rows]}]
   [:table.ui.table.segment
@@ -69,7 +68,7 @@
          [:td cell])])]])
 
 (comment
-  (make-html-table processed-sample-data)
+  (make-html-table sample-data)
 
   
 )

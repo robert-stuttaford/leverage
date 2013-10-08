@@ -1,26 +1,24 @@
 (ns leverage.app
   (:require [dommy.core :as dommy]
-            [clojure.browser.repl]
             [leverage.domain :as domain])
-  (:use-macros [dommy.macros :only [node sel1 deftemplate]]))
-
-(deftemplate make-html-table
-  [data]
-  (domain/make-table data))
+  (:use-macros [dommy.macros :only [node sel1]]))
 
 (defn render-table!
   [table-data]
-  (let [html-table (domain/make-html-table table-data)]
-    (.log js/console html-table)
-    (dommy/replace-contents! (sel1 :#content) html-table)))
+  (let [html-data (domain/make-html-table table-data)]
+    
+    (.log js/console (pr-str html-data))
+    
+    (dommy/replace-contents!
+     ;; find #content in the page
+     (sel1 :#content)
+     ;; convert html data into DOM nodes
+     (node html-data))))
 
-(defn ^:export start
+(defn ^:export sample
+  []
+  (render-table! domain/sample-data))
+
+(defn ^:export processed
   []
   (render-table! domain/processed-sample-data))
-
-(comment
-  (js/alert "test")
-  
-  (render-table! domain/processed-sample-data)
-  
-  (render-table! domain/sample-data))
