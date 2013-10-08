@@ -11,7 +11,7 @@
 ;; HTML layout
 
 (defn layout
-  [& content]
+  [content]
   (hiccup/html
    (page/html5
     [:head
@@ -23,13 +23,13 @@
      [:div.ui.one.column.page.grid
       [:div.column
        [:h1.ui.header
-        [:img.ui.floated.left.image {:src "/images/clojure-icon.gif" :width "100" :height "100"}]
+        [:img.ui.floated.left.image {:src "/images/clojure-icon.gif"
+                                     :width "100" :height "100"}]
         [:div.content "Get leverage with Clojure!"]]
        [:div.ui.compact.menu
         [:a.item {:href "/"} "Clojure"]
         [:a.item {:href "/cljs"} "ClojureScript"]]
-       [:div#content
-        content]]]])))
+       [:div#content content]]]])))
 
 (comment
   (layout "Hello, Tech4Africa!")
@@ -56,7 +56,7 @@
 (comment
   (app {:request-method :get :uri "/"})
 
-
+  
   
   (app {:request-method :get :uri "/cljs"})
 
@@ -82,5 +82,7 @@
 (defn start-web!
   []
   (stop-web!)
-  (let [server (ring-server/serve app {:port 3333 :open-browser? false :join? false})]
+  (let [server (ring-server/serve app {:port 3333
+                                       :open-browser? false
+                                       :join? false})]
     (reset! web-process server)))
